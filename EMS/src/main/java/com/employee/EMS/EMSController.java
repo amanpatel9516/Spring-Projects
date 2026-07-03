@@ -39,6 +39,12 @@ public class EMSController {
         employeeService.deleteEmployee(id);
     }
 
+    @PutMapping("update/{id}")
+    public Employee updateEmployee(@PathVariable Long id,
+            @RequestBody Employee employee) {
+        return employeeService.updateEmployee(id, employee);
+    }
+
     @PutMapping("raise/{id}")
     public Employee raiseSalary(@PathVariable Long id,
             @RequestBody Double percentage) {

@@ -1,0 +1,170 @@
+{
+	"info": {
+		"_postman_id": "c1f71a4f-561b-4b2a-8ff4-6aef3593dfa9",
+		"name": "Employee Management System (EMS) API",
+		"description": "Postman Collection for managing employees using the EMS application. Includes endpoints for creating, retrieving, updating, raising salary, displaying, and deleting employees.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create Employee",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"John Doe\",\n    \"age\": 30,\n    \"designation\": \"PROGRAMMER\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8030/ems/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8030",
+					"path": [
+						"ems",
+						"create"
+					]
+				},
+				"description": "Creates a new employee. Valid designations are PROGRAMMER, MANAGER, and TESTER. Age must be between 18 and 60."
+			},
+			"response": []
+		},
+		{
+			"name": "Display All Employees",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8030/ems/display",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8030",
+					"path": [
+						"ems",
+						"display"
+					]
+				},
+				"description": "Retrieves the list of all registered employees."
+			},
+			"response": []
+		},
+		{
+			"name": "Get Employee by ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8030/ems/employee/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8030",
+					"path": [
+						"ems",
+						"employee",
+						"1"
+					]
+				},
+				"description": "Retrieves the details of a specific employee using their ID."
+			},
+			"response": []
+		},
+		{
+			"name": "Update Employee Details",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"John Doe Jr.\",\n    \"age\": 31\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8030/ems/update/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8030",
+					"path": [
+						"ems",
+						"update",
+						"1"
+					]
+				},
+				"description": "Updates the name and age of an employee and increments their salary based on their designation."
+			},
+			"response": []
+		},
+		{
+			"name": "Raise Salary by Percentage",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "5.5"
+				},
+				"url": {
+					"raw": "http://localhost:8030/ems/raise/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8030",
+					"path": [
+						"ems",
+						"raise",
+						"1"
+					]
+				},
+				"description": "Raises the employee's salary by a specific percentage (between 1 and 100)."
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Employee",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8030/ems/delete/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8030",
+					"path": [
+						"ems",
+						"delete",
+						"1"
+					]
+				},
+				"description": "Deletes an employee from the system by their ID."
+			},
+			"response": []
+		}
+	]
+}

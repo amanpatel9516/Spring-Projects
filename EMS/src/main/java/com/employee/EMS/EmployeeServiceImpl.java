@@ -12,6 +12,9 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public Employee createEmployee(Employee employee) {
+        if (employee.getName() == null || !employee.getName().matches("^[a-zA-Z]+( [a-zA-Z]+){0,2}$")) {
+            throw new RuntimeException("Name must only contain letters and max two spaces in between");
+        }
         if (emsRepository.findByName(employee.getName()).isPresent()) {
             throw new RuntimeException("Employee already exists");
         }
@@ -50,6 +53,9 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public Employee updateEmployee(Long id, Employee employee) {
+        if (employee.getName() == null || !employee.getName().matches("^[a-zA-Z]+( [a-zA-Z]+){0,2}$")) {
+            throw new RuntimeException("Name must only contain letters and max two spaces in between");
+        }
         Employee updateEmp = emsRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Employee not found"));
         updateEmp.setName(employee.getName());
